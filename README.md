@@ -12,4 +12,4 @@
 `\_AutoUpdate\Version.txt`存放程序的最新版本号 *(Release1.1.0.0)*<br>
 
 ## 原理
-程序启动时或用户手动按下**检查更新按钮**时，从
+程序启动时或用户手动按下**检查更新按钮**时，从`https://raw.githubusercontent.com/bilibilihuazi/AutoUpdateTest/refs/heads/master/_AutoUpdate/Version.txt`读取文件信息，并于程序内部`Version`变量比较，如相同则不提示任何信息。如不同则提示有新版本并显示最新版本

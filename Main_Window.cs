@@ -19,7 +19,7 @@ namespace AutoUpdateTest
         //函数========================================================================================
 
         //联网获取文件
-        public static async Task<string> ReadFileFromUrlAsync(string fileUrl)
+        public static async Task<string> ReadUrlFile(string fileUrl)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -50,7 +50,7 @@ namespace AutoUpdateTest
             InitializeComponent();
 
             //测试
-
+            Console.WriteLine(ReadUrlFile(""));
 
         }
         //主代码区======================================================================================
