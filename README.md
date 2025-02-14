@@ -5,8 +5,8 @@
 
 ## 文件结构
 ### 程序
-`\_Compile\AutoUpdate_Release1.0.0.0.exe`作为程序`Release1.0.0.0`版本，为**旧版本**<br>
-`\_Conpile\AutoUpdate_Release1.1.0.0.exe`作为程序`Release1.1.0.0`版本，为**最新版本**<br><br>
+`\_Compile\AutoUpdateTest_Release1.0.0.0.exe`作为程序`Release1.0.0.0`版本，为**旧版本**<br>
+`\_Conpile\AutoUpdateTest_Release1.1.0.0.exe`作为程序`Release1.1.0.0`版本，为**最新版本**<br><br>
 
 ### 文件
 `\_AutoUpdate\Version.txt`存放程序的最新版本号 *(Release1.1.0.0)*<br>

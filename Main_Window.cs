@@ -16,7 +16,7 @@ namespace AutoUpdateTest
     {
         //变量========================================================================================
         public static string Title = "自动更新测试程序,当前版本:";
-        public static string Version = "Release1.0.0.0";
+        public static string Version = "Release1.1.0.0";
         //函数========================================================================================
 
         //HTTP读取文件(同步)
@@ -110,19 +110,40 @@ namespace AutoUpdateTest
             label_MainTitle.Text = $"当前版本为{Version}";
             label_MainTitle.Left = this.Width / 2 - label_MainTitle.Width / 2;//标题居中
 
-            //测试
-            Console.WriteLine($"最新版本:{HttpReadFile("http://127.0.0.1:5500/_AutoUpdate/Version.txt")}");
-            
+            //检查更新
+            string latestVersion = HttpReadFile("https://cdn.githubraw.com/bilibilihuazi/AutoUpdateTest/2354176c/_AutoUpdate/Version.txt");
+            if (latestVersion != Version)
+            {
+                if (MessageBox.Show($"检测到可用更新！\n\n最新版本:{latestVersion}\n当前版本:{Version}\n\n是否前往官网进行更新!", "检查更新", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    MessageBox.Show("我们没有官网，这仅仅是一个测试程序，请前往Github仓库查看源码", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+
         }
         //主代码区======================================================================================
+        //Main_Window载入
         private void Main_Window_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        //检查更新按钮点击
+        private void button_CheckUpdate_Click(object sender, EventArgs e)
         {
-            label1.Text = HttpReadFile("http://127.0.0.1:5500/_AutoUpdate/Version.txt");
+            string latestVersion = HttpReadFile("https://cdn.githubraw.com/bilibilihuazi/AutoUpdateTest/2354176c/_AutoUpdate/Version.txt");
+            if(latestVersion==Version)
+            {
+                MessageBox.Show($"您使用的是最新{latestVersion}版本，无需更新！", "检查更新", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if(MessageBox.Show($"检测到可用更新！\n\n最新版本:{latestVersion}\n当前版本:{Version}\n\n是否前往官网进行更新!", "检查更新", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)==DialogResult.OK)
+                {
+                    MessageBox.Show("我们没有官网，这仅仅是一个测试程序，请前往Github仓库查看源码", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+
         }
     }
 }
