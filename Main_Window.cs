@@ -50,8 +50,8 @@ namespace AutoUpdateTest
             InitializeComponent();
 
             //测试
-            Console.WriteLine(ReadUrlFile(""));
-
+            Console.WriteLine(ReadUrlFile("https://raw.githubusercontent.com/bilibilihuazi/AutoUpdateTest/refs/heads/master/_AutoUpdate/Version.txt"));
+            
         }
         //主代码区======================================================================================
         private void Main_Window_Load(object sender, EventArgs e)
