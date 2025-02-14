@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +18,27 @@ namespace AutoUpdateTest
         public static string Version = "Release1.0.0.0";
         //函数========================================================================================
 
+        //联网获取文件
+        public static async Task<string> ReadFileFromUrlAsync(string fileUrl)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync(fileUrl);
+                    response.EnsureSuccessStatusCode();
+
+                    string content = await response.Content.ReadAsStringAsync();
+                    return content;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"读取文件失败: {ex.Message}");
+                    return string.Empty;
+                }
+            }
+        }
+
         //检查更新
         public static void CheckUpdate()
         {
@@ -26,6 +48,9 @@ namespace AutoUpdateTest
         public Main_Window()
         {
             InitializeComponent();
+
+            //测试
+
 
         }
         //主代码区======================================================================================
